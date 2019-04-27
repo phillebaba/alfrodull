@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/python,pip
-# Edit at https://www.gitignore.io/?templates=python,pip
+# Created by https://www.gitignore.io/api/python,pip,virtualenv
+# Edit at https://www.gitignore.io/?templates=python,pip,virtualenv
 
 #!! ERROR: pip is undefined. Use list command to see defined gitignore types !!#
 
@@ -129,5 +129,17 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# End of https://www.gitignore.io/api/python,pip
+### VirtualEnv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+pip-selfcheck.json
+
+# End of https://www.gitignore.io/api/python,pip,virtualenv
 n

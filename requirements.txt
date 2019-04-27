@@ -1,3 +1,6 @@
 BlinkStick==1.1.8
+dbus-python==1.2.8
 psutil==5.6.2
+pycairo==1.18.1
+PyGObject==3.32.1
 pyusb==1.0.0b1
