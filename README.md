@@ -36,8 +36,7 @@ Right now only predefined events and effects can be used, the possible options a
 
 ```yml
 ---
-device:
-  type: blinkstick
+device: blinkstick
 
 events:
   - event: Shutdown

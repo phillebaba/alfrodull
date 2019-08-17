@@ -1,3 +1,44 @@
+import yaml
+
+import importlib
+
+def read_and_validate_configuration(file_path):
+    """
+    Reads the content of the specifed file_path
+    and tries to parse it's content into a config object.
+    """
+    with open(file_path, 'r') as stream:
+        try:
+            config_dict = yaml.safe_load(stream)
+        except yaml.YAMLError as error:
+            print(error)
+            return None
+
+    for (key, value) in config_dict.items():
+        if key == "device":
+            device = importlib.import_module("devices.{}".format(value)).create()
+        elif key == "events":
+            events = []
+            for item in value:
+                # Import event class
+                event_type = item["type"]
+                event_module = importlib.import_module("events.{}".format(event_type.lower()))
+                event_class = getattr(event_module, event_type)
+
+                # Import animation class
+                animation_type = item["animation"]["type"]
+                del item["animation"]["type"]
+                animation_module = importlib.import_module("animation.{}".format(animation_type.lower().replace(" ", "_")))
+                animation_class = getattr(animation_module, animation_type.replace(" ", ""))
+
+                # Create event instance
+                event = event_class(animation=animation_class(**item["animation"]))
+                events.append(event)
+
+    if not device or not events:
+        return None
+
+    return (device, events)
 
 def hex_to_RGB(hex):
     """ "#FFFFFF" -> [255,255,255] """

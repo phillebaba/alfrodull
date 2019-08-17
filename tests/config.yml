@@ -1,0 +1,14 @@
+device: blinkstick
+events:
+  - type: "Init"
+    animation:
+      type: "Fade"
+      color: "#ffffff"
+  - type: "Sleep"
+    animation:
+      type: "Inside Out"
+      color: "#000000"
+  - type: "Wakeup"
+    animation:
+      type: "Outside In"
+      color: "#ffffff"
