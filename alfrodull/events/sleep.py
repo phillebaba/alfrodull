@@ -27,8 +27,8 @@ class Sleep():
 
     def inhibit(self):
         self.fd = self.manager.Inhibit("sleep",
-                                      "light-controller",
-                                       "Light Animation",
+                                      "alfrodull",
+                                       "Complete light animation",
                                        "delay")
 
     def handle_signal(self, value):
