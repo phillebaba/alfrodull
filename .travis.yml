@@ -1,0 +1,29 @@
+os: linux
+sudo: required
+dist: xenial
+language: python
+python: "3.7"
+
+stages:
+  - test
+  - name: release
+    if: tag IS present
+
+before_install:
+  - sudo apt-get update -q
+  - sudo apt install libgirepository1.0-dev gcc libcairo2-dev pkg-config python3-dev gir1.2-gtk-3.0 libdbus-glib-1-dev
+
+install:
+  - pip install -r requirements.txt
+  - pip install twine
+
+jobs:
+  include:
+    - stage: test
+      script:
+        - echo "testing"
+    - stage: release
+      script:
+        - python setup.py sdist bdist_wheel
+        - twine upload -u $PYPI_USERNAME -p $PYPI_PASSWORD dist/*
+
