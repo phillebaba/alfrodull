@@ -5,6 +5,8 @@ The lights can be turned off when the computer sleepd, and turn on when the comp
 
 Right now the only supported devices are those from [blinksticks](https://www.blinkstick.com/). More can be added if requested and I can get ahold of them.
 
+Alfrodull only works on Linux right now as all of the events uses DBUS notifications to react to events. Support for Windows could be added in the future but would require some other notification service.
+
 ## Install
 ```bash
 pip install alfrodull
