@@ -1,6 +1,8 @@
+os: linux
+sudo: required
+dist: xenial
 language: python
-python:
-  - 3.7
+python: "3.7"
 
 stages:
   - test
@@ -8,8 +10,8 @@ stages:
     if: tag IS present
 
 before_install:
-  - sudo apt install python3-gi
-  - sudo apt install libgirepository1.0-dev
+  - sudo apt-get update -q
+  - sudo apt install libgirepository1.0-dev gcc libcairo2-dev pkg-config python3-dev gir1.2-gtk-3.0 libdbus-glib-1-dev
 
 install:
   - pip install -r requirements.txt
